@@ -36,7 +36,7 @@ function App() {
   const handleRemoveFromCart = () => null
 
   if(isLoading) return <LinearProgress />
-  if(error) return <div>Algo deu errado, tente novamento ou volte mais tarde...</div>
+  if(error) return <div>Algo deu errado, tente novamente ou volte mais tarde...</div>
 
   return (
     <Wrapper>
