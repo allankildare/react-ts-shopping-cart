@@ -9,7 +9,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 import Badge from '@material-ui/core/Badge'
 
 // themes
-import { Wrapper } from './app.styles'
+import { Wrapper, StyledButton } from './app.styles'
 
 // Types
 export type CardItemType = {
@@ -26,10 +26,13 @@ const getProducts = async (): Promise<CardItemType[]> =>
   await (await fetch('https://fakestoreapi.com/products')).json()
 
 function App() {
+  const [cartOpen, setCartOpen] = useState(false)
+  const [cartItems, setCartItems] = useState([] as CardItemType[])
+
   const {data, isLoading, error } = useQuery<CardItemType[]>('products', getProducts)
   console.log(data)
 
-  const getTotalItems = () => null
+  const getTotalItems = (items: CardItemType[]) => null
   
   const handleAddToCart = (clickedItem: CardItemType) => null
 
@@ -40,6 +43,15 @@ function App() {
 
   return (
     <Wrapper>
+      <Drawer anchor='right' open={ cartOpen } onClose={ () => setCartOpen(false) }>
+        Itens do carrinho
+      </Drawer>
+
+      <StyledButton onClick={() => setCartOpen(true)}>
+        <Badge badgeContent={getTotalItems(cartItems)} color='error'>
+          <AddShoppingCartIcon />
+        </Badge>
+      </StyledButton>
       <Grid container spacing={3}>
         {data?.map(item => (
           <Grid item key={ item.id } xs={12} sm={4}>
