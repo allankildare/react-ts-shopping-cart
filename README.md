@@ -14,3 +14,5 @@ Nessa aplicação React eu pude explorar mais da programação utilizando o Type
   - [https://styled-components.com/](https://styled-components.com/)
 - React Query
   - [https://react-query.tanstack.com](https://react-query.tanstack.com)
+
+Você pode acessar a aplicação [clicando aqui](https://react-ts-shopping-cart-five.vercel.app/) :link:.
